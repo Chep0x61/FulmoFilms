@@ -5,7 +5,6 @@ import Commercials from "./Pages/Commercials";
 import Projects from "./Pages/Projects";
 import Musics from "./Pages/Musics";
 import Photos from "./Pages/Photos";
-import Services from "./Pages/Services";
 import CV from "./Pages/CV";
 import Contact from "./Pages/Contact";
 import NotFound from "./Pages/NotFound";
@@ -19,7 +18,6 @@ const App = () => {
         <Route path="/project" element={<Projects />} />
         <Route path="/music" element={<Musics />} />
         <Route path="/photo" element={<Photos />} />
-        <Route path="/service" element={<Services />} />
         <Route path="/cv" element={<CV />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
