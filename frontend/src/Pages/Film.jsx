@@ -1,15 +1,15 @@
 import Navbar from "../Components/Navbar";
-import Hero from "../Components/Hero";
+import Wip from "../Components/Wip";
 import Footer from "../Components/Footer";
 
-const Home = () => {
+const Films = () => {
     return (
         <div>
             <Navbar />
-            <Hero />
+            <Wip />
             <Footer />
         </div>
     );
 }
 
-export default Home;
+export default Films;

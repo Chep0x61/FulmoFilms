@@ -1,15 +1,15 @@
 import Navbar from "../Components/Navbar";
-import Hero from "../Components/Hero";
 import Footer from "../Components/Footer";
+import Wip from "../Components/Wip";
 
-const Home = () => {
+const Projects = () => {
     return (
         <div>
             <Navbar />
-            <Hero />
+            <Wip />
             <Footer />
         </div>
     );
 }
 
-export default Home;
+export default Projects;
