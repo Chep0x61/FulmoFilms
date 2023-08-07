@@ -1,6 +1,10 @@
+import VideoDemo from "./VideoDemo";
+
 const Hero = () => {
     return (
-        <div>Hero</div>
+        <div className="mt-16 flex justify-center items-center lg:m-0">
+            <VideoDemo />
+        </div>
     );
 }
 

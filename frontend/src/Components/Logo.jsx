@@ -1,13 +1,23 @@
+import { Link } from 'react-router-dom';
+
 const Logo = ({ mw, mh }) => {
   return (
-    <div className={`flex lg:flex-col items-center`}>
-      <img src="/images/sbff.png" alt="FulmoFilms" className="w-16 h-16" />
-      <div className="hidden lg:flex lg:flex-col lg:items-center lg:pt-[1px] lg:pb-4">
-        <p className="font-poppins text-base">Mathis Lunot</p>
-        <p className="font-m_poppins text-base">Cinematographer</p>
+    <Link to="/">
+      <div className={`flex lg:flex-col items-center`}>
+        <img className='absolute mt-[-13%] top-0 left-0 w-screen h-screen z-[-1]' src="wave.svg" alt="wave">
+        </img>
+        <img
+          src="/images/swff.png"
+          alt="FulmoFilms"
+          className="w-16 h-16 lg:w-36 lg:h-36"
+        />
+        <div className="hidden lg:flex lg:flex-col lg:items-center lg:pt-[1px] lg:pb-4 text-white">
+          <p className="font-poppins text-base">Mathis Lunot</p>
+          <p className="font-m_poppins text-base">Cinematographer</p>
+        </div>
       </div>
-    </div>
+    </Link>
   );
-}
+};
 
 export default Logo;
