@@ -1,23 +1,24 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
-import Films from "./Pages/Films";
-import Commercials from "./Pages/Commercials";
-import Projects from "./Pages/Projects";
-import Musics from "./Pages/Musics";
-import Photos from "./Pages/Photos";
+import Film from "./Pages/Film";
+import Commercial from "./Pages/Commercial";
+import Project from "./Pages/Project";
+import Music from "./Pages/Music";
+import Photo from "./Pages/Photo";
 import CV from "./Pages/CV";
 import Contact from "./Pages/Contact";
 import NotFound from "./Pages/NotFound";
+
 
 const App = () => {
   return (
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/film" element={<Films />} />
-        <Route path="/commercial" element={<Commercials />} />
-        <Route path="/project" element={<Projects />} />
-        <Route path="/music" element={<Musics />} />
-        <Route path="/photo" element={<Photos />} />
+        <Route path="/film" element={<Film />} />
+        <Route path="/commercial" element={<Commercial />} />
+        <Route path="/project" element={<Project />} />
+        <Route path="/musicvideo" element={<Music />} />
+        <Route path="/photography" element={<Photo />} />
         <Route path="/cv" element={<CV />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
