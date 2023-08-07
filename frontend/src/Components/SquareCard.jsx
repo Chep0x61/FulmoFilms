@@ -17,9 +17,9 @@ const SquareCard = ({ src, alt, title, text }) => {
 
   return (
     <div
-      className={`w-44 h-44 lg:w-48 lg:h-48 rounded-md p-4 cursor-pointer relative shadow-md shadow-[#ffffff] ${
+      className={`w-44 h-44 lg:w-48 lg:h-48 rounded-md p-4 cursor-pointer relative ${
         showBack ? 'bg-[#043a72]' : 'bg-[#272727]'
-      } ${hovered && !showBack ? 'shadow-[#0357b3]' : ''}`}
+      } ${hovered && !showBack ? 'shadow-[#0357b3] shadow-md' : 'shadow-[#ffffff]'}`}
       onClick={() => {
         if (!showBack) {
           handleClick();
