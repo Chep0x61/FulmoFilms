@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 const Logo = ({ mw, mh }) => {
   return (
     <Link to="/">
-      <div className={`flex lg:flex-col items-center`}>
-        <img className='absolute mt-[-13%] top-0 left-0 w-screen h-screen z-[-1]' src="wave.svg" alt="wave">
-        </img>
+      <div className="flex lg:flex-col items-center">
         <img
           src="/images/swff.png"
           alt="FulmoFilms"
