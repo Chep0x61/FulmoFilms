@@ -23,12 +23,11 @@ const VideoDemo = () => {
     return (
         <div>
             <iframe
-                title="BandeDémoFulmoFilms"
                 src="https://player.vimeo.com/video/838293783?h=9689c7ee88&autoplay=1&loop=1&title=0"
                 style={{ zIndex: 1 }}
                 width={videoWidth}
                 height={Math.floor((videoWidth * 558) / 992)}
-                frameBorder="0"
+                frameborder="0"
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
             ></iframe>
