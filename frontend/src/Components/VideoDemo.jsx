@@ -23,7 +23,8 @@ const VideoDemo = () => {
     return (
         <div>
             <iframe
-                src="https://player.vimeo.com/video/838293783?h=9689c7ee88&autoplay=1&loop=1&title=0"
+                title="Mathis Lunot's showreel"
+                src="https://player.vimeo.com/video/838293783?autoplay=1&loop=1&title=0&muted=1"
                 style={{ zIndex: 1 }}
                 width={videoWidth}
                 height={Math.floor((videoWidth * 558) / 992)}
