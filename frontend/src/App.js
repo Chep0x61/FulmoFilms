@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import Film from "./Pages/Film";
 import Commercial from "./Pages/Commercial";
-import Project from "./Pages/Project";
+import Projects from "./Pages/Projects";
 import Music from "./Pages/Music";
 import Photo from "./Pages/Photo";
 import CV from "./Pages/CV";
@@ -16,7 +16,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/film" element={<Film />} />
         <Route path="/commercial" element={<Commercial />} />
-        <Route path="/project" element={<Project />} />
+        <Route path="/projects" element={<Projects />} />
         <Route path="/musicvideo" element={<Music />} />
         <Route path="/photography" element={<Photo />} />
         <Route path="/cv" element={<CV />} />
