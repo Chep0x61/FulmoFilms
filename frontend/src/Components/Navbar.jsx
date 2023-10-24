@@ -25,7 +25,7 @@ const Navbar = () => {
       <div className={`hidden 2xl:inline space-x-8 text-xl text-white lg:ml-[14%] ${showMenu ? "hidden" : "block"}`}>
         <Link to="/film" className={`hover:underline hover:underline-offset-2 ${location.pathname === "/film" ? "underline underline-offset-2" : ""}`}>FILM</Link>
         <Link to="/commercial" className={`hover:underline hover:underline-offset-2 ${location.pathname === "/commercial" ? "underline underline-offset-2" : ""}`}>COMMERCIAL</Link>
-        <Link to="/project" className={`hover:underline hover:underline-offset-2 ${location.pathname === "/project" ? "underline underline-offset-2" : ""}`}>PROJECT</Link>
+        <Link to="/projects" className={`hover:underline hover:underline-offset-2 ${location.pathname === "/projects" ? "underline underline-offset-2" : ""}`}>PROJECTS</Link>
         <Link to="/musicvideo" className={`hover:underline hover:underline-offset-2 ${location.pathname === "/musicvideo" ? "underline underline-offset-2" : ""}`}>MUSIC VIDEO</Link>
         <Link to="/photography" className={`hover:underline hover:underline-offset-2 ${location.pathname === "/photography" ? "underline underline-offset-2" : ""}`}>PHOTOGRAPHY</Link>
         <Link to="/cv" className={`hover:underline hover:underline-offset-2 ${location.pathname === "/cv" ? "underline underline-offset-2" : ""}`}>CV</Link>
@@ -41,7 +41,7 @@ const Navbar = () => {
             <div className="flex flex-col p-24 space-y-4 justify-center items-center h-screen">
               <Link onClick={toggleMenu} to="/film" className="text-xl text-gray-100 text-2xl hover:underline hover:underline-offset-2">FILM</Link>
               <Link onClick={toggleMenu} to="/commercial" className="text-xl text-gray-100 text-2xl hover:underline hover:underline-offset-2">COMMERCIAL</Link>
-              <Link onClick={toggleMenu} to="/project" className="text-xl text-gray-100 text-2xl hover:underline hover:underline-offset-2">PROJECT</Link>
+              <Link onClick={toggleMenu} to="/projects" className="text-xl text-gray-100 text-2xl hover:underline hover:underline-offset-2">PROJECTS</Link>
               <Link onClick={toggleMenu} to="/musicvideo" className="text-xl text-gray-100 text-2xl hover:underline hover:underline-offset-2">MUSIC VIDEO</Link>
               <Link onClick={toggleMenu} to="/photography" className="text-xl text-gray-100 text-2xl hover:underline hover:underline-offset-2">PHOTOGRAPHY</Link>
               <Link onClick={toggleMenu} to="/cv" className="text-xl text-gray-100 text-2xl hover:underline hover:underline-offset-2">CV</Link>
