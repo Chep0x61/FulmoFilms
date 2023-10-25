@@ -90,7 +90,7 @@ const Photos = () => {
           }
           setImagesWithOrientation(images);
         };
-      
+
         loadImagesWithOrientation();
       }, [filteredImages]);
 
@@ -131,7 +131,7 @@ const Photos = () => {
                   <img
                     src={image.path}
                     alt={image.title}
-                    className="w-[400px] h-[200px] object-cover 2xl:group-hover:opacity-60 2xl:transition-all 2xl:duration-200 inset-0 h-full object-cover object-center"
+                    className="w-[400px] h-[200px] object-cover 2xl:group-hover:opacity-60 2xl:transition-all 2xl:duration-200 inset-0 h-full object-cover object-center" loading="lazy"
                   />
                   <div className="absolute bottom-0 left-0 p-2 bg-opacity-50 text-sm md:text-base text-white opacity-0">
                     <h2>{image.title}</h2>
@@ -143,14 +143,26 @@ const Photos = () => {
           <Footer />
 
           <ReactModal
-            isOpen={modalIsOpen}
-            onRequestClose={closeModal}
-            contentLabel="Image Modal"
-            className="modal"
-            overlayClassName="overlay"
-          >
-            {selectedImage && <img className="w-[80%]" src={selectedImage} alt="Modal" />}
-          </ReactModal>
+  isOpen={modalIsOpen}
+  onRequestClose={closeModal}
+  contentLabel="Image Modal"
+  className="modal"
+  overlayClassName="overlay"
+>
+  {selectedImage && (
+    <img
+      className={`${
+        imagesWithOrientation.find((image) => image.path === selectedImage)
+          .orientation === 'portrait'
+          ? 'w-[50%]'
+          : 'w-[80%]'
+      }`}
+      src={selectedImage}
+      alt="Modal"
+    />
+  )}
+</ReactModal>
+
         </div>
       );
     };
