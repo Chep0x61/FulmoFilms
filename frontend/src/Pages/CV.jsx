@@ -14,6 +14,7 @@ const CV = () => {
             <li>2023</li>
             <ul className="list-disc ml-8">
               <li>Réalisateur & Dir de la photographie : Publicité- AFPA</li>
+              <li>Lumière et Cadre : Publicité- Hermès Paris</li>
             </ul>
             <li>2022</li>
             <ul className="list-disc ml-8 text-base lg:text-lg">
