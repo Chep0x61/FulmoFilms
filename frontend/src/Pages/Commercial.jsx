@@ -7,10 +7,17 @@ const Commercials = () => {
     return (
         <div>
             <Navbar />
-            <div className="mt-16 flex justify-center items-center lg:m-0">
+            <div className="mt-16 flex flex-col justify-center items-center lg:m-0">
             <VimeoCustomVideo
                 title="AFPA - Mathis Lunot"
                 link="836153003"
+                autoplay={false}
+                loop={false}
+                muted={false}
+            />
+            <VimeoCustomVideo
+                title="AFPA - Mathis Lunot"
+                link="877928903"
                 autoplay={false}
                 loop={false}
                 muted={false}

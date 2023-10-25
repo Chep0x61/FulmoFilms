@@ -13,6 +13,7 @@ const Projects = () => {
           <a className="xl:hover:opacity-[60%] xl:duration-200" target="_blank" rel="noopener noreferrer" href="https://vimeo.com/836199983"><img src="/miniatures/minia_3.jpg" alt="behind the scenes Euphoria"></img></a>
           <a className="xl:hover:opacity-[60%] xl:duration-200" target="_blank" rel="noopener noreferrer" href="https://vimeo.com/435094086"><img src="/miniatures/minia_4.jpg" alt="La Réunion"></img></a>
           <a className="xl:hover:opacity-[60%] xl:duration-200" target="_blank" rel="noopener noreferrer" href="https://vimeo.com/435287317"><img src="/miniatures/minia_5.jpg" alt="Our mission"></img></a>
+          <a className="xl:hover:opacity-[60%] xl:duration-200" target="_blank" rel="noopener noreferrer" href="https://vimeo.com/877928903"><img src="/miniatures/minia_6.jpg" alt="Our mission"></img></a>
         </div>
       </div>
       <Footer />
