@@ -42,7 +42,10 @@ const Photos = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const imagesPerPage = 12;
+  const imagesPerPage = 9;
+
+  const [imagesToLoad, setImagesToLoad] = useState(9);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
 
   const maxImagesCount = Object.values(maxImagesByCategory).reduce((acc, val) => acc + val, 0);
 
@@ -53,6 +56,13 @@ const Photos = () => {
     landscapes: [],
     portraits: [],
     others: [],
+  };
+
+  // Fonction pour charger les images supplémentaires
+  const loadMoreImages = () => {
+    setLoading(true);
+    const newImagesToLoad = imagesLoaded + imagesPerPage;
+    setImagesToLoad(newImagesToLoad);
   };
 
   const loadImages = (categoryPath) => {
@@ -87,20 +97,6 @@ const Photos = () => {
     setModalIsOpen(false);
   };
 
-  const loadMoreImages = () => {
-    setLoading(true);
-
-    const totalPages = Math.ceil(maxImagesCount / imagesPerPage);
-
-    if (currentPage < totalPages) {
-      setTimeout(() => {
-        setCurrentPage(currentPage + 1);
-        setLoading(false);
-      }, 1000);
-    } else {
-      setLoading(false);
-    }
-  };
 
   const handleScroll = () => {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
@@ -138,6 +134,28 @@ const Photos = () => {
 
     loadImagesWithOrientation();
   }, [selectedCategory]);
+
+  useEffect(() => {
+    const loadImagesWithOrientation = async () => {
+      const images = selectedCategory === "All"
+        ? categories.flatMap((category) => loadImages(category.path))
+        : loadImages(selectedCategory);
+
+      const imagesWithOrientation = [];
+
+      for (let i = 0; i < imagesToLoad && i < images.length; i++) {
+        const image = images[i];
+        const orientation = await getImageOrientation(image.path);
+        imagesWithOrientation.push({ ...image, orientation });
+      }
+
+      setImagesWithOrientation(imagesWithOrientation);
+      setImagesLoaded(imagesWithOrientation.length);
+      setLoading(false);
+    };
+
+    loadImagesWithOrientation();
+  }, [selectedCategory, imagesToLoad]);
 
   const filteredImages = selectedCategory === "All"
     ? imagesWithOrientation
