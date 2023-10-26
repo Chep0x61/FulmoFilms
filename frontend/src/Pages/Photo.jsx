@@ -42,10 +42,7 @@ const Photos = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const imagesPerPage = 9;
-
-  const [imagesToLoad, setImagesToLoad] = useState(9);
-  const [imagesLoaded, setImagesLoaded] = useState(0);
+  const imagesPerPage = 6;
 
   const maxImagesCount = Object.values(maxImagesByCategory).reduce((acc, val) => acc + val, 0);
 
@@ -58,21 +55,18 @@ const Photos = () => {
     others: [],
   };
 
-  // Fonction pour charger les images supplémentaires
-  const loadMoreImages = () => {
-    setLoading(true);
-    const newImagesToLoad = imagesLoaded + imagesPerPage;
-    setImagesToLoad(newImagesToLoad);
-  };
-
-  const loadImages = (categoryPath) => {
+  const loadImages = (categoryPath, quality) => {
     const images = [];
-  
     const maxImagesInCategory = maxImagesByCategory[categoryPath];
-  
+
     for (let i = 1; i <= maxImagesInCategory; i++) {
-      const imagePath = `/photography/${categoryPath}/ML_${i}.jpg`;
-  
+      let imagePath;
+      if (quality === 'thumbnail') {
+        imagePath = `/photography/thumbnails/${categoryPath}/ML_${i}.jpg`;
+      } else if (quality === 'hq') {
+        imagePath = `/photography/hq/${categoryPath}/ML_${i}.jpg`;
+      }
+
       if (process.env.PUBLIC_URL + imagePath) {
         images.push({
           path: imagePath,
@@ -81,7 +75,7 @@ const Photos = () => {
         });
       }
     }
-  
+
     return images;
   };
 
@@ -97,6 +91,20 @@ const Photos = () => {
     setModalIsOpen(false);
   };
 
+  const loadMoreImages = () => {
+    setLoading(true);
+
+    const totalPages = Math.ceil(maxImagesCount / imagesPerPage);
+
+    if (currentPage < totalPages) {
+      setTimeout(() => {
+        setCurrentPage(currentPage + 1);
+        setLoading(false);
+      }, 1000);
+    } else {
+      setLoading(false);
+    }
+  };
 
   const handleScroll = () => {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
@@ -117,15 +125,22 @@ const Photos = () => {
 
   useEffect(() => {
     const loadImagesWithOrientation = async () => {
-      const images = selectedCategory === "All" ?
-        categories.flatMap((category) => loadImages(category.path)) :
-        loadImages(selectedCategory);
+      const thumbnailImages = selectedCategory === "All"
+        ? categories.flatMap((category) => loadImages(category.path, 'thumbnail'))
+        : loadImages(selectedCategory, 'thumbnail');
+
+      const hqImages = selectedCategory === "All"
+        ? categories.flatMap((category) => loadImages(category.path, 'hq'))
+        : loadImages(selectedCategory, 'hq');
 
       const imagesWithOrientation = [];
 
-      for (const image of images) {
-        const orientation = await getImageOrientation(image.path);
-        imagesWithOrientation.push({ ...image, orientation });
+      for (let i = 0; i < thumbnailImages.length; i++) {
+        const thumbnailImage = thumbnailImages[i];
+        const hqImage = hqImages[i];
+        const orientation = await getImageOrientation(hqImage.path);
+
+        imagesWithOrientation.push({ ...thumbnailImage, orientation, hqPath: hqImage.path });
       }
 
       setImagesWithOrientation(imagesWithOrientation);
@@ -134,28 +149,6 @@ const Photos = () => {
 
     loadImagesWithOrientation();
   }, [selectedCategory]);
-
-  useEffect(() => {
-    const loadImagesWithOrientation = async () => {
-      const images = selectedCategory === "All"
-        ? categories.flatMap((category) => loadImages(category.path))
-        : loadImages(selectedCategory);
-
-      const imagesWithOrientation = [];
-
-      for (let i = 0; i < imagesToLoad && i < images.length; i++) {
-        const image = images[i];
-        const orientation = await getImageOrientation(image.path);
-        imagesWithOrientation.push({ ...image, orientation });
-      }
-
-      setImagesWithOrientation(imagesWithOrientation);
-      setImagesLoaded(imagesWithOrientation.length);
-      setLoading(false);
-    };
-
-    loadImagesWithOrientation();
-  }, [selectedCategory, imagesToLoad]);
 
   const filteredImages = selectedCategory === "All"
     ? imagesWithOrientation
@@ -201,7 +194,6 @@ const Photos = () => {
                   src={image.path}
                   alt={image.title}
                   className="w-[400px] h-[200px] object-cover 2xl:group-hover:opacity-60 2xl:transition-all 2xl:duration-200 inset-0 h-full object-cover object-center"
-                  loading="lazy"
                 />
                 <div className="absolute bottom-0 left-0 p-2 bg-opacity-50 text-sm md:text-base text-white opacity-0">
                   <h2>{image.title}</h2>
@@ -210,7 +202,7 @@ const Photos = () => {
             ))}
         </div>
         {loading ? (
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-4">
             <TailSpin
               height="80"
               width="80"
@@ -233,12 +225,12 @@ const Photos = () => {
         {selectedImage && (
           <img
             className={`${
-              imagesWithOrientation.find((image) => image.path === selectedImage).orientation ===
+              imagesWithOrientation.find((img) => img.path === selectedImage).orientation ===
               "portrait"
                 ? "w-[50%]"
                 : "w-[80%]"
             }`}
-            src={selectedImage}
+            src={imagesWithOrientation.find((img) => img.path === selectedImage).hqPath}
             alt="Modal"
           />
         )}
