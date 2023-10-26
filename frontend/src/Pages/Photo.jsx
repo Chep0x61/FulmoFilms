@@ -13,8 +13,8 @@ function getImageOrientation(imagePath) {
       const orientation = img.width > img.height ? "landscape" : "portrait";
       resolve(orientation);
     };
-  });
-}
+  }
+)};
 
 const categories = [
   { name: "Animals", path: "animals" },
@@ -55,33 +55,12 @@ const Photos = () => {
     others: [],
   };
 
-  const loadImages = (categoryPath, quality) => {
-    const images = [];
-    const maxImagesInCategory = maxImagesByCategory[categoryPath];
+  const [selectedHQImage, setSelectedHQImage] = useState(null);
 
-    for (let i = 1; i <= maxImagesInCategory; i++) {
-      let imagePath;
-      if (quality === 'thumbnail') {
-        imagePath = `/photography/thumbnails/${categoryPath}/ML_${i}.jpg`;
-      } else if (quality === 'hq') {
-        imagePath = `/photography/hq/${categoryPath}/ML_${i}.jpg`;
-      }
-
-      if (process.env.PUBLIC_URL + imagePath) {
-        images.push({
-          path: imagePath,
-          title: imageTitles[categoryPath][i - 1],
-          category: categoryPath,
-        });
-      }
-    }
-
-    return images;
-  };
-
-  const handleImageClick = (imagePath) => {
+  const handleImageClick = (imagePath, hqPath) => {
     if (window.innerWidth >= 1024) {
       setSelectedImage(imagePath);
+      setSelectedHQImage(hqPath);
       setModalIsOpen(true);
     }
   };
@@ -116,6 +95,30 @@ const Photos = () => {
     setScrollPosition(scrollTop);
   };
 
+  const loadImages = (categoryPath, quality) => {
+    const images = [];
+    const maxImagesInCategory = maxImagesByCategory[categoryPath];
+  
+    for (let i = 1; i <= maxImagesInCategory; i++) {
+      let imagePath;
+      if (quality === 'thumbnail') {
+        imagePath = `/photography/thumbnails/${categoryPath}/ML_${i}.jpg`;
+      } else if (quality === 'hq') {
+        imagePath = `/photography/hq/${categoryPath}/ML_${i}.jpg`;
+      }
+  
+      if (process.env.PUBLIC_URL + imagePath) {
+        images.push({
+          path: imagePath,
+          title: imageTitles[categoryPath][i - 1],
+          category: categoryPath,
+        });
+      }
+    }
+  
+    return images;
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -129,16 +132,14 @@ const Photos = () => {
         ? categories.flatMap((category) => loadImages(category.path, 'thumbnail'))
         : loadImages(selectedCategory, 'thumbnail');
 
-      const hqImages = selectedCategory === "All"
-        ? categories.flatMap((category) => loadImages(category.path, 'hq'))
-        : loadImages(selectedCategory, 'hq');
-
       const imagesWithOrientation = [];
 
       for (let i = 0; i < thumbnailImages.length; i++) {
         const thumbnailImage = thumbnailImages[i];
-        const hqImage = hqImages[i];
-        const orientation = await getImageOrientation(hqImage.path);
+        const hqImage = selectedCategory === "All"
+          ? categories.flatMap((category) => loadImages(category.path, 'hq'))[i]
+          : loadImages(selectedCategory, 'hq')[i];
+        const orientation = await getImageOrientation(thumbnailImage.path);
 
         imagesWithOrientation.push({ ...thumbnailImage, orientation, hqPath: hqImage.path });
       }
@@ -188,7 +189,7 @@ const Photos = () => {
                 className={`group cursor-pointer flex justify-center ${
                   image.orientation === "portrait" ? "portrait-image row-span-2" : ""
                 }`}
-                onClick={() => handleImageClick(image.path)}
+                onClick={() => handleImageClick(image.path, image.hqPath)}
               >
                 <img
                   src={image.path}
@@ -230,7 +231,7 @@ const Photos = () => {
                 ? "w-[50%]"
                 : "w-[80%]"
             }`}
-            src={imagesWithOrientation.find((img) => img.path === selectedImage).hqPath}
+            src={selectedHQImage}
             alt="Modal"
           />
         )}
