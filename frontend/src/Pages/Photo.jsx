@@ -43,18 +43,7 @@ const Photos = () => {
   const [loading, setLoading] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
   const imagesPerPage = 6;
-
   const maxImagesCount = Object.values(maxImagesByCategory).reduce((acc, val) => acc + val, 0);
-
-  const imageTitles = {
-    animals: [],
-    architecture: [],
-    events: [],
-    landscapes: [],
-    portraits: [],
-    others: [],
-  };
-
   const [selectedHQImage, setSelectedHQImage] = useState(null);
 
   const handleImageClick = (imagePath, hqPath) => {
@@ -110,7 +99,6 @@ const Photos = () => {
       if (process.env.PUBLIC_URL + imagePath) {
         images.push({
           path: imagePath,
-          title: imageTitles[categoryPath][i - 1],
           category: categoryPath,
         });
       }
@@ -193,12 +181,9 @@ const Photos = () => {
               >
                 <img
                   src={image.path}
-                  alt={image.title}
+                  alt="Mathis Lunot's cliché"
                   className="w-[400px] h-[200px] object-cover 2xl:group-hover:opacity-60 2xl:transition-all 2xl:duration-200 inset-0 h-full object-cover object-center"
                 />
-                <div className="absolute bottom-0 left-0 p-2 bg-opacity-50 text-sm md:text-base text-white opacity-0">
-                  <h2>{image.title}</h2>
-                </div>
               </div>
             ))}
         </div>
