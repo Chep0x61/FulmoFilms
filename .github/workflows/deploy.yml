@@ -21,11 +21,11 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Navigate to Frontend Directory & Install Dependencies
+      - name: Move to Frontend Directory & Install Dependencies
         run: cd frontend ; npm install
 
-      - name: Build
-        run: npm run build
+      - name: Move to Frontend Directory & Build
+        run: cd frontend ; npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
