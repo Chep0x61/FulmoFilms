@@ -13,11 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Navigate to Frontend Directory
-        run: cd frontend
-
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Navigate to Frontend Directory
+        run: cd frontend
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
