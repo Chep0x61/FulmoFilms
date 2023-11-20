@@ -111,7 +111,7 @@ const Photos = () => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
-    };
+    }; // eslint-disable-next-line
   }, [scrollPosition]);
 
   useEffect(() => {
