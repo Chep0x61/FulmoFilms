@@ -7,13 +7,12 @@ on:
   pull_request:
     branches:
       - main
-      
-permissions:
-  contents: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout Repository
@@ -31,6 +30,7 @@ jobs:
         run: npm run --prefix ./frontend build
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          folder: build.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./frontend/build
