@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <div className="font-m_poppins flex flex-row text-xl items-center justify-between 2xl:justify-normal">
-        <img className="absolute mt-[13%] z-[-1] w-screen" src="animation/wave.svg" alt="wave"></img>
+        <img className="absolute mt-[13%] z-[-1] w-screen" src="/animation/wave.svg" alt="wave"></img>
       <div className="ml-4 lg:ml-8">
         <Logo mw={16} mh={16} />
       </div>
