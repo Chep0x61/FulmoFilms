@@ -1,11 +1,11 @@
-import VimeoCustomVideo from "./VimeoCustomVideo";
+import YoutubeCustomVideo from "./YoutubeCustomVideo";
 
 const Hero = () => {
     return (
         <div className="mt-16 flex justify-center items-center lg:m-0">
-            <VimeoCustomVideo
+            <YoutubeCustomVideo
                 title="Mathis Lunot's showreel"
-                link="1012723147"
+                videoId="7XWS4yVYFZE"
                 autoplay={true}
                 loop={true}
                 muted={true}
