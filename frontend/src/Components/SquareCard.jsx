@@ -18,7 +18,7 @@ const SquareCard = ({ src, alt, title, text }) => {
       <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
         <div
             className={`w-44 h-44 lg:w-48 lg:h-48 rounded-md p-4 cursor-pointer relative bg-[#272727] ${
-                hovered ? 'shadow-[#0357b3] shadow-md' : 'shadow-[#ffffff]'
+                hovered ? 'shadow-[#00b4d8] shadow-md' : 'shadow-[#ffffff]'
             }`}
             onClick={handleCardClick}
             onMouseEnter={() => setHovered(true)}
@@ -30,7 +30,7 @@ const SquareCard = ({ src, alt, title, text }) => {
           </div>
         </div>
 
-        <div className="w-44 h-44 lg:w-48 lg:h-48 rounded-md p-4 cursor-pointer relative bg-[#043a72]">
+        <div className="w-44 h-44 lg:w-48 lg:h-48 rounded-md p-4 cursor-pointer relative bg-[#00b4d8]">
           <div className="flex flex-col items-center justify-center">
             <div className="absolute top-0 left-0 p-2 cursor-pointer arrow-div pointer-events-auto" onClick={handleArrowClick}>
               <img className="w-8 h-8" src="/icons/mingcute/arrow.svg" alt="Arrow" />

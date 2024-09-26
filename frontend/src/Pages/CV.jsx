@@ -6,7 +6,7 @@ const CV = () => {
     <div>
       <Navbar />
       <div className="flex flex-col w-screen items-center">
-        <div className="bg-[#272727] mt-8 p-8 rounded-lg shadow-lg shadow-blue-500/50 max-w-[95%]">
+        <div className="bg-[#272727] mt-8 p-8 rounded-lg shadow-lg shadow-[#00b4d8]/50 max-w-[95%]">
             <p className="font-bold text-3xl">Mathis Lunot</p>
             <p>Né à Clermont-Ferrand le 23 mai 2001</p>
           <h2 className="mt-4 text-xl lg:text-3xl font-bold">Filmographie :</h2>
