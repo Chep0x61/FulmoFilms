@@ -33,7 +33,7 @@ const PhotographyGrid = () => {
                 <button
                     onClick={() => setSelectedCategory("All")}
                     className={`${
-                        selectedCategory === "All" ? "bg-blue-500 text-white" : "bg-gray-700"
+                        selectedCategory === "All" ? "bg-[#00b4d8] text-white" : "bg-gray-700"
                     } py-2 px-4 rounded-md`}
                 >
                     All
@@ -43,7 +43,7 @@ const PhotographyGrid = () => {
                         key={category.name}
                         onClick={() => setSelectedCategory(category.name)}
                         className={`${
-                            selectedCategory === category.name ? "bg-blue-500 text-white" : "bg-gray-700"
+                            selectedCategory === category.name ? "bg-[#00b4d8] text-white" : "bg-gray-700"
                         } py-2 px-4 rounded-md`}
                     >
                         {category.name}
