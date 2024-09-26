@@ -10,6 +10,7 @@ const Hero = () => {
                 loop={true}
                 muted={true}
                 title_layout={false}
+                quality="hd1080"
             />
         </div>
     );

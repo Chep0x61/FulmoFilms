@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const YoutubeCustomVideo = ({ title, videoId, autoplay, loop, muted, title_layout }) => {
+const YoutubeCustomVideo = ({ title, videoId, autoplay, loop, muted, title_layout, quality = "hd720" }) => {
     const [videoWidth, setVideoWidth] = useState(992);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const YoutubeCustomVideo = ({ title, videoId, autoplay, loop, muted, title_layou
         };
     }, []);
 
-    const videoSrc = `https://www.youtube.com/embed/${videoId}?autoplay=${autoplay ? 1 : 0}&loop=${loop ? 1 : 0}&mute=${muted ? 1 : 0}&showinfo=${title_layout ? 1 : 0}&playlist=${videoId}`;
+    const videoSrc = `https://www.youtube.com/embed/${videoId}?autoplay=${autoplay ? 1 : 0}&loop=${loop ? 1 : 0}&mute=${muted ? 1 : 0}&showinfo=${title_layout ? 1 : 0}&playlist=${videoId}&vq=${quality}`;
 
     return (
         <div>
