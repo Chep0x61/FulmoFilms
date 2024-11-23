@@ -54,6 +54,14 @@ const eventsData = [
         title: '',
         blurhash: 'L89P$cS#IpE2}@aejFNb0er?%1xu',
         orientation: 'landscape'
+    },
+    {
+        category: 'events',
+        id: '8',
+        alt: '',
+        title: '',
+        blurhash: 'L34w9Y63SfsU|_E|j[jtA;wew{WV',
+        orientation: 'landscape'
     }
 ];
 

@@ -104,7 +104,47 @@ const landscapesData = [
         title: '',
         blurhash: 'L89aBQ0000?b-;M{Rjt700?b~qD%',
         orientation: 'landscape'
-    }
+    },
+    {
+        category: 'landscapes',
+        id: '18',
+        alt: '',
+        title: '',
+        blurhash: 'L14xoP?Yh{H;00R7tmpL00E2NJ%h',
+        orientation: 'landscape'
+    },
+    {
+        category: 'landscapes',
+        id: '14',
+        alt: '',
+        title: '',
+        blurhash: 'L02YkmD{G1=.9D$@n0Nh0J$@wZN4',
+        orientation: 'landscape'
+    },
+    {
+        category: 'landscapes',
+        id: '15',
+        alt: '',
+        title: '',
+        blurhash: 'LYF$CX%MRjj[~pxuRjfQRjj[WBj[',
+        orientation: 'landscape'
+    },
+    {
+        category: 'landscapes',
+        id: '16',
+        alt: '',
+        title: '',
+        blurhash: 'LPFP4{WBE1WX~WWCRja}TKoJn$j[',
+        orientation: 'landscape'
+    },
+    {
+        category: 'landscapes',
+        id: '17',
+        alt: '',
+        title: '',
+        blurhash: 'L6E3C%?b00M{~qof%Mxu4nRjM{ay',
+        orientation: 'landscape'
+    },
 ];
 
 export default landscapesData;
