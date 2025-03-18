@@ -5,7 +5,7 @@ const Hero = () => {
         <div className="mt-16 flex justify-center items-center lg:m-0">
             <YoutubeCustomVideo
                 title="Mathis Lunot's showreel"
-                videoId="7XWS4yVYFZE"
+                videoId="Q5Wf14jf2zA&t"
                 autoplay={true}
                 loop={true}
                 muted={true}
