@@ -13,6 +13,7 @@ const CV = () => {
             <ul className="list-disc ml-8 text-base lg:text-lg">
               <li>2024</li>
               <ul className="list-disc ml-8">
+                <li>1st AC : Court Métrage- À CONTRECHAMP</li>
                 <li>Régisseur : En aparté -Flab Pod- Canal +</li>
                 <li>Réalisateur & Dir de la photographie : Publicité- THE BEAUTY OF TIME- ZENITH </li>
               </ul>
