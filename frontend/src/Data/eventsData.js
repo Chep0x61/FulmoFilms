@@ -62,7 +62,32 @@ const eventsData = [
         title: '',
         blurhash: 'L34w9Y63SfsU|_E|j[jtA;wew{WV',
         orientation: 'landscape'
+    },
+    {
+        category: 'events',
+        id: '9',
+        alt: '',
+        title: '',
+        blurhash: 'L00velV[8xtQVta{o|j[DPoy.QVt',
+        orientation: 'landscape'
+    },
+    {
+        category: 'events',
+        id: '10',
+        alt: '',
+        title: '',
+        blurhash: 'U22~Gcbb03nNoJfQWXf70MjF~UXSNeazs+j@',
+        orientation: 'landscape'
+    },
+    {
+        category: 'events',
+        id: '11',
+        alt: '',
+        title: '',
+        blurhash: 'L00vF.j[9tWBs:fQR*ay9tay=|of',
+        orientation: 'landscape'
     }
+    
 ];
 
 export default eventsData;

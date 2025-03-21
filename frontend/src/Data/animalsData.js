@@ -54,6 +54,14 @@ const animalsData = [
         title: '',
         blurhash: 'L3CZ;Z9}01DN00xZ?Zt800RP~AyE',
         orientation: 'landscape'
+    },
+    {
+        category: 'animals',
+        id: '8',
+        alt: '',
+        title: '',
+        blurhash: 'LEFE[n00?aM|pf0K-;RjtmIAtRoK',
+        orientation: 'portrait'
     }
 ];
 
